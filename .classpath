@@ -51,5 +51,6 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="/CucumberFrameworkTesting2"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
