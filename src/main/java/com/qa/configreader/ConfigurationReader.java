@@ -14,8 +14,9 @@ public class ConfigurationReader {
 		try {
 			FileInputStream in = new FileInputStream(
 					"C:\\Users\\glend\\eclipse-workspace\\CucumberFrameworkTesting3\\src\\main\\resources\\configuration\\config.properties");
-
+			System.out.println("File inserted into Stream");
 			prop.load(in);
+			System.out.println("Properties file loaded for use");
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -30,4 +31,16 @@ public class ConfigurationReader {
 	}
 	
 
+	public static String getConfigProp(String propValue) {
+		ConfigurationReader cg = new ConfigurationReader();
+		Properties prope =	cg.setUpPropertiesFile();
+		String value=prope.getProperty(propValue);
+		return value;
+		
+		
+		//return getInstance().setUpPropertiesFile().getProperty(propValue);
+		
+	}
+	
+	
 }
