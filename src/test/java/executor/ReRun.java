@@ -7,13 +7,11 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features= {"src\\test\\resources\\OrderPlace\\"},
+		features= {"@target/failedcases.txt"},
 		glue= {"stepdefinition","hooks3"},
-		plugin= {"pretty",
-				"rerun:target/failedcases.txt"}	
+		plugin= {"pretty","rerun:target/failedcases.txt"}	
 		
 		)
-
-public class TestExecutor {
+public class ReRun {
 
 }

@@ -11,9 +11,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import com.qa.configreader.ConfigurationReader;
 
 public class Driverhandler {
-	WebDriver driver1;
+	
 
-	public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+	public static WebDriver driver ;
 
 	public WebDriver launchBrowser(String browser, String URL) {
 
@@ -27,41 +27,39 @@ public class Driverhandler {
 			option.setExperimentalOption("excludeSwitches",
 					Arrays.asList("disable-popup-blocking", "enable-automation"));
 			System.out.println("Chrome Options set");
-			driver.set(new ChromeDriver(option));
+			driver=new ChromeDriver(option);
 			System.out.println("Browser launched");
-			getDriver().manage().deleteAllCookies();
-			getDriver().get(URL);
+			driver.manage().deleteAllCookies();
+			driver.get(URL);
 			System.out.println("URL Loaded");
 			break;
 
 		case "firefox":
 
-			driver.set(new FirefoxDriver());
-			getDriver().manage().deleteAllCookies();
-			getDriver().get(URL);
+			driver=new FirefoxDriver();
+			driver.manage().deleteAllCookies();
+			driver.get(URL);
 			break;
 
 		case "edge":
 
-			driver.set(new EdgeDriver());
-			getDriver().manage().deleteAllCookies();
-			getDriver().get(URL);
+			driver=new EdgeDriver();
+			driver.manage().deleteAllCookies();
+			driver.get(URL);
 			break;
 		default:
 			System.out.println("Entered browser doient match any Case");
 			break;
 		}
 
-		return getDriver();
+		return driver;
 
 	}
 
-	public static synchronized WebDriver getDriver() {
-		return driver.get();
-	}
+	
 
-	public static synchronized void quitDriver() {
-		driver.get().quit();
+	public static  void quitDriver() {
+		driver.quit();
 	}
 	
 	
