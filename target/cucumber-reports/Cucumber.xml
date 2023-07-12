@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="13.272">
+    <testcase classname="To validate the order feature" name="TC1 To verify user is able to order a product" time="7.267">
+        <system-out><![CDATA[Given User lands on Sign In page of SL......................................passed
+When User enters UserName...................................................passed
+And User enters Password....................................................passed
+Then User is logged in to home page of sauce labs...........................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="To validate the order feature laptop" name="TC2 To verify user is able to order a Laptop" time="5.837">
+        <failure message="Failing" type="java.lang.Exception"><![CDATA[Given User lands on Sign In page of SL......................................passed
+When User enters UserName...................................................passed
+And User enters Password....................................................passed
+Then User is logged in to home page of sauce labs...........................passed
+And Fail The scenario.......................................................failed
+
+StackTrace:
+java.lang.Exception: Failing
+	at stepdefinition.CommonMethods.fail_the_scenario(CommonMethods.java:53)
+	at ✽.Fail The scenario(file:///C:/Users/glend/eclipse-workspace/CucumberFrameworkTesting3/src/test/resources/OrderPlace/TC02_Verify%20Product%20Ordering%20for%20Laptop.feature:11)
+]]></failure>
+    </testcase>
+</testsuite>

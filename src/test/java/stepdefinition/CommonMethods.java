@@ -50,7 +50,7 @@ public class CommonMethods {
 	@Then("Fail The scenario")
 	public void fail_the_scenario() throws Exception {
 		
-		//throw new Exception("Failing");
+		throw new Exception("Failing");
 	}
 
 }

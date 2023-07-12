@@ -10,7 +10,11 @@ import io.cucumber.junit.CucumberOptions;
 		features= {"src\\test\\resources\\OrderPlace\\"},
 		glue= {"stepdefinition","hooks3"},
 		plugin= {"pretty",
-				"rerun:target/failedcases.txt"}	
+				"rerun:target/failedcases.txt",
+				"json:target/cucumber-reports/Cucumber.json",
+				"junit:target/cucumber-reports/Cucumber.xml",
+				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"		
+		}	
 		
 		)
 

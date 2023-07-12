@@ -2,6 +2,10 @@ package hooks3;
 
 import java.io.IOException;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
 import com.qa.configreader.ConfigurationReader;
 import com.qa.driverhandling.Driverhandler;
 import io.cucumber.java.*;
@@ -13,6 +17,7 @@ public class HooksT3 {
 	public String browser;
 	public String URL;
 	public static String folderName;
+	WebDriver driver;
 	
 	
 	@Before(order=0)
@@ -27,7 +32,7 @@ public class HooksT3 {
 	@Before(order=1)
 	public void setUpDriver() {
 		
-		Driverhandler.getInstance().launchBrowser(browser, URL);
+		driver=Driverhandler.getInstance().launchBrowser(browser, URL);
 		
 	}
 
@@ -46,7 +51,16 @@ public class HooksT3 {
 		if(sc.isFailed()) {
 			System.out.println(sc.getStatus());
 			ScreenShot.takeScreenShotOnFailure();
-			
+			try {
+				// this method invokes screenshot upon failure
+				ScreenShot.takeScreenShotOnFailure();
+				/* This code is to attach the failure page screenshot to report */
+				String screenshotName = sc.getName().replaceAll(" ", "_");
+				byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+				sc.attach(sourcePath, "image/png", screenshotName);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		else {
 			System.out.println(sc.getStatus());
